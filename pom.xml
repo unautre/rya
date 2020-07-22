@@ -1,1503 +1,1503 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor 
+	license agreements. See the NOTICE file distributed with this work for additional 
+	information regarding copyright ownership. The ASF licenses this file to 
+	you under the Apache License, Version 2.0 (the "License"); you may not use 
+	this file except in compliance with the License. You may obtain a copy of 
+	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.apache</groupId>
+		<artifactId>apache</artifactId>
+		<version>17</version>
+	</parent>
 
-  http://www.apache.org/licenses/LICENSE-2.0
+	<groupId>org.apache.rya</groupId>
+	<artifactId>rya-project</artifactId>
+	<version>4.0.1-incubating-SNAPSHOT</version>
 
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.apache</groupId>
-        <artifactId>apache</artifactId>
-        <version>17</version>
-    </parent>
+	<packaging>pom</packaging>
 
-    <groupId>org.apache.rya</groupId>
-    <artifactId>rya-project</artifactId>
-    <version>4.0.1-incubating-SNAPSHOT</version>
+	<name>Apache Rya Project</name>
+	<!-- this is the year of inception at ASF -->
+	<inceptionYear>2015</inceptionYear>
+	<organization>
+		<name>The Apache Software Foundation</name>
+		<url>http://www.apache.org/</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+	<mailingLists>
+		<mailingList>
+			<name>Dev</name>
+			<subscribe>dev-subscribe@rya.incubator.apache.org</subscribe>
+			<unsubscribe>dev-unsubscribe@rya.incubator.apache.org</unsubscribe>
+			<post>dev@rya.incubator.apache.org</post>
+			<archive>http://mail-archives.apache.org/mod_mbox/rya-dev</archive>
+		</mailingList>
+	</mailingLists>
+	<prerequisites>
+		<maven>${maven.min-version}</maven>
+	</prerequisites>
+	<modules>
+		<module>common</module>
+		<module>dao</module>
+		<module>extras</module>
+		<module>mapreduce</module>
+		<module>osgi</module>
+		<module>pig</module>
+		<module>sail</module>
+		<module>spark</module>
+		<module>test</module>
+		<module>web</module>
+	</modules>
+	<properties>
+		<org.eclipse.rdf4j.version>2.3.1</org.eclipse.rdf4j.version> <!-- Newest: 2.3.1 -->
 
-    <packaging>pom</packaging>
+		<accumulo.version>1.6.4</accumulo.version> <!-- Newest: 1.7.0 -->
+		<hadoop.version>2.5.0</hadoop.version> <!-- Newest: 2.7.1 -->
 
-    <name>Apache Rya Project</name>
-    <!-- this is the year of inception at ASF -->
-    <inceptionYear>2015</inceptionYear>
-    <organization>
-        <name>The Apache Software Foundation</name>
-        <url>http://www.apache.org/</url>
-    </organization>
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-        </license>
-    </licenses>
-    <mailingLists>
-        <mailingList>
-            <name>Dev</name>
-            <subscribe>dev-subscribe@rya.incubator.apache.org</subscribe>
-            <unsubscribe>dev-unsubscribe@rya.incubator.apache.org</unsubscribe>
-            <post>dev@rya.incubator.apache.org</post>
-            <archive>http://mail-archives.apache.org/mod_mbox/rya-dev</archive>
-        </mailingList>
-    </mailingLists>
-    <prerequisites>
-        <maven>${maven.min-version}</maven>
-    </prerequisites>
-    <modules>
-        <module>common</module>
-        <module>dao</module>
-        <module>extras</module>
-        <module>mapreduce</module>
-        <module>osgi</module>
-        <module>pig</module>
-        <module>sail</module>
-        <module>spark</module>
-        <module>test</module>
-        <module>web</module>
-    </modules>
-    <properties>
-        <org.eclipse.rdf4j.version>2.3.1</org.eclipse.rdf4j.version> <!-- Newest: 2.3.1 -->
+		<zookeeper.version>3.4.6</zookeeper.version>
 
-        <accumulo.version>1.6.4</accumulo.version> <!-- Newest: 1.7.0 -->
-        <hadoop.version>2.5.0</hadoop.version> <!-- Newest: 2.7.1 -->
-        
-        <zookeeper.version>3.4.6</zookeeper.version>
+		<pig.version>0.9.2</pig.version> <!-- Newest: 0.15.0 -->
 
-        <pig.version>0.9.2</pig.version> <!-- Newest: 0.15.0 -->
+		<lucene.version>5.2.1</lucene.version> <!-- Newest: 5.3.1 -->
+		<joda-time.version>2.1</joda-time.version> <!-- Newest: 2.9.1 -->
 
-        <lucene.version>5.2.1</lucene.version> <!-- Newest: 5.3.1 -->
-        <joda-time.version>2.1</joda-time.version> <!-- Newest: 2.9.1 -->
+		<mongodb.version>3.10.2</mongodb.version>
+		<embed.mongo.version>2.2.0</embed.mongo.version>
 
-        <mongodb.version>3.10.2</mongodb.version>
-        <embed.mongo.version>2.2.0</embed.mongo.version>
+		<tinkerpop.version>3.2.2</tinkerpop.version> <!-- Newest: Apache 3.2.2 -->
 
-        <tinkerpop.version>3.2.2</tinkerpop.version> <!-- Newest: Apache 3.2.2 -->
+		<commons.lang.version>2.6</commons.lang.version> <!-- Newest: 2.6 -->
+		<commons.codec.version>1.10</commons.codec.version> <!-- Newest: 1.10 -->
+		<commons.pool.version>1.6</commons.pool.version> <!-- Newest: 1.6 -->
+		<commons.io.version>2.5</commons.io.version>
 
-        <commons.lang.version>2.6</commons.lang.version> <!-- Newest: 2.6 -->
-        <commons.codec.version>1.10</commons.codec.version> <!-- Newest: 1.10 -->
-        <commons.pool.version>1.6</commons.pool.version> <!-- Newest: 1.6 -->
-        <commons.io.version>2.5</commons.io.version>
-        
-        <gmaven.version>1.3</gmaven.version> <!-- Newest: 1.5 -->
+		<gmaven.version>1.3</gmaven.version> <!-- Newest: 1.5 -->
 
-        <guava.version>14.0.1</guava.version> <!-- Newest: 18.0 -->
-        <gson.version>2.8.1</gson.version>
+		<guava.version>14.0.1</guava.version> <!-- Newest: 18.0 -->
+		<gson.version>2.8.1</gson.version>
 
-        <httpcomponents.httpclient.version>4.5.2</httpcomponents.httpclient.version> <!-- Newest: 4.5.3 -->
-        <httpcomponents.httpcore.version>4.4.4</httpcomponents.httpcore.version> <!-- Newest: 4.4.6 -->
+		<httpcomponents.httpclient.version>4.5.2</httpcomponents.httpclient.version> <!-- Newest: 4.5.3 -->
+		<httpcomponents.httpcore.version>4.4.4</httpcomponents.httpcore.version> <!-- Newest: 4.4.6 -->
 
-        <karaf.version>2.2.11</karaf.version> <!-- Newest: 4.0.3 -->
-        <mango.version>1.2.0</mango.version> <!-- Newest: 1.4.0 -->
-        <antlr-runtime.version>3.4</antlr-runtime.version> <!-- Newest: 3.5.2 -->
-        <ehcache.version>1.7.2</ehcache.version> <!-- Newest: 2.6.11 -->
-        <hamcrest.version>1.3</hamcrest.version> <!-- Newest: 1.3 -->
-        <camel.version>2.7.5</camel.version> <!-- Newest: 2.16.1 -->
+		<karaf.version>2.2.11</karaf.version> <!-- Newest: 4.0.3 -->
+		<mango.version>1.2.0</mango.version> <!-- Newest: 1.4.0 -->
+		<antlr-runtime.version>3.4</antlr-runtime.version> <!-- Newest: 3.5.2 -->
+		<ehcache.version>1.7.2</ehcache.version> <!-- Newest: 2.6.11 -->
+		<hamcrest.version>1.3</hamcrest.version> <!-- Newest: 1.3 -->
+		<camel.version>2.7.5</camel.version> <!-- Newest: 2.16.1 -->
 
-        <spring.version>3.2.15.RELEASE</spring.version> <!-- Newest: 4.2.3.RELEASE -->
-        <spring.hadoop.version>1.0.2.RELEASE</spring.hadoop.version> <!-- Newest: 2.2.1.RELEASE -->
-        <spring.shell.version>1.1.0.RELEASE</spring.shell.version> <!-- Newest: 1.1.0.RELEASE -->
+		<spring.version>3.2.15.RELEASE</spring.version> <!-- Newest: 4.2.3.RELEASE -->
+		<spring.hadoop.version>1.0.2.RELEASE</spring.hadoop.version> <!-- Newest: 2.2.1.RELEASE -->
+		<spring.shell.version>1.1.0.RELEASE</spring.shell.version> <!-- Newest: 1.1.0.RELEASE -->
 
-        <junit.version>4.12</junit.version> <!-- Newest: 4.12 -->
-        <mockito.version>1.10.19</mockito.version> <!-- Newest: 1.10.19 -->
-        <mrunit.version>1.1.0</mrunit.version> <!-- Newest: 1.1.0 -->
-        <slf4j.version>1.7.25</slf4j.version> <!-- Newest: 1.7.13 -->
-        <powermock.version>1.6.1</powermock.version>
+		<junit.version>4.12</junit.version> <!-- Newest: 4.12 -->
+		<mockito.version>1.10.19</mockito.version> <!-- Newest: 1.10.19 -->
+		<mrunit.version>1.1.0</mrunit.version> <!-- Newest: 1.1.0 -->
+		<slf4j.version>1.7.25</slf4j.version> <!-- Newest: 1.7.13 -->
+		<powermock.version>1.6.1</powermock.version>
 
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- the maven-release-plugin makes this recommendation, due to plugin bugs -->
-        <maven.min-version>3.0.4</maven.min-version>
-        
-        <fluo.version>1.0.0-incubating</fluo.version>
+		<!-- the maven-release-plugin makes this recommendation, due to plugin 
+			bugs -->
+		<maven.min-version>3.0.4</maven.min-version>
 
-        <plexus.version>3.0.8</plexus.version>
-        <thrift.version>0.9.1</thrift.version>
-        <commons.cli.version>1.2</commons.cli.version>
-        <jcommander.version>1.60</jcommander.version> <!--  geowave declares a 1.48 dependency and does not support a version higher than 1.60 -->
-        <twitter4jstream.version>4.0.1</twitter4jstream.version>
+		<fluo.version>1.0.0-incubating</fluo.version>
 
-        <jmh.version>1.13</jmh.version>
+		<plexus.version>3.0.8</plexus.version>
+		<thrift.version>0.9.1</thrift.version>
+		<commons.cli.version>1.2</commons.cli.version>
+		<jcommander.version>1.60</jcommander.version> <!-- geowave declares a 1.48 dependency and does not support a version higher 
+			than 1.60 -->
+		<twitter4jstream.version>4.0.1</twitter4jstream.version>
 
-        <jsr305.version>1.3.9-1</jsr305.version>
-        <jcip.version>1.0-1</jcip.version>
-        <kafka.version>0.10.0.1</kafka.version>
-        <kryo.version>3.0.3</kryo.version>
-        <jcabi-manifeses.version>1.1</jcabi-manifeses.version>
-        
-        <!-- set profile property defaults -->
-        <skip.rya.it>true</skip.rya.it>  <!-- modified by  -P enable-it  -->
-        <skip.rpm.distribution>true</skip.rpm.distribution> <!-- modify by -P build-rpms -->
-    </properties>
-    
-    <!-- Enable this profile if you want to include Geo functions within Rya. "mvn ... -P geoindexing" -->
-    <profiles>
-        <profile>
-            <id>geoindexing</id>
-            <properties>
-                <geomesa.version>1.3.0-m1</geomesa.version> <!-- Newest: 1.3.0-m1 -->
-                <geowave.version>0.9.3</geowave.version> <!-- Newest: 0.9.3 -->
-                <jts.version>1.13</jts.version>
-            </properties>
-            <dependencyManagement>
-                <dependencies>
-                    <!-- Published RYA geo artifacts. -->
-                    <dependency>
-                        <groupId>org.apache.rya</groupId>
-                        <artifactId>rya.geo.common</artifactId>
-                        <version>${project.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.rya</groupId>
-                        <artifactId>rya.geo.geomesa</artifactId>
-                        <version>${project.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.rya</groupId>
-                        <artifactId>rya.geo.geowave</artifactId>
-                        <version>${project.version}</version>
-                    </dependency>
-                    <dependency>
-                       <groupId>org.apache.rya</groupId>
-                        <artifactId>rya.geo.mongo</artifactId>
-                        <version>${project.version}</version>
-                    </dependency>
-                    <dependency>
-                       <groupId>org.apache.rya</groupId>
-                        <artifactId>rya.geoindexing</artifactId>
-                        <version>${project.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.rya</groupId>
-                        <artifactId>rya.pcj.functions.geo</artifactId>
-                        <version>${project.version}</version>
-                    </dependency>
+		<jmh.version>1.13</jmh.version>
 
-                    <!-- Geomesa dependencies. -->
-                    <dependency>
-                        <groupId>org.locationtech.geomesa</groupId>
-                        <artifactId>geomesa-accumulo-datastore_2.11</artifactId>
-                        <version>${geomesa.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.locationtech.geomesa</groupId>
-                        <artifactId>geomesa-accumulo-distributed-runtime_2.11</artifactId>
-                        <version>${geomesa.version}</version>
-                    </dependency>
-                    
-                    <!-- Geowave dependencies. -->
-                    <dependency>
-                        <groupId>mil.nga.giat</groupId>
-                        <artifactId>geowave-parent</artifactId>
-                        <version>${geowave.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>mil.nga.giat</groupId>
-                        <artifactId>geowave-datastore-accumulo</artifactId>
-                        <version>${geowave.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>mil.nga.giat</groupId>
-                        <artifactId>geowave-adapter-vector</artifactId>
-                        <version>${geowave.version}</version>
-                    </dependency>
-                    
-                    <!-- Misc dependencies. -->
-                    <dependency>
-                        <groupId>com.vividsolutions</groupId>
-                        <artifactId>jts</artifactId>
-                        <version>1.13</version>
-                    </dependency>
-                </dependencies>
-            </dependencyManagement>
-            
-            <repositories>
-                <repository>
-                    <id>LocationTech - SNAPSHOT</id>
-                    <url>https://repo.locationtech.org/content/repositories/snapshots/</url>
-                    <releases>
-                        <enabled>false</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>  <!--  disable snapshot repositories while there are no snapshot dependencies -->
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>LocationTech - RELEASE</id>
-                    <url>https://repo.locationtech.org/content/repositories/releases/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>LocationTech - Third Party</id>
-                    <url>https://repo.locationtech.org/content/repositories/thirdparty/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>geowave-maven-releases</id>
-                    <name>GeoWave AWS Release Repository</name>
-                    <url>https://s3.amazonaws.com/geowave-maven/release</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>geowave-maven-snapshot</id>
-                    <name>GeoWave AWS Snapshot Repository</name>
-                    <url>https://s3.amazonaws.com/geowave-maven/snapshot</url>
-                    <releases>
-                        <enabled>false</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>  <!--  disable snapshot repositories while there are no snapshot dependencies -->
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>osgeo</id>
-                    <name>Open Source Geospatial Foundation Repository</name>
-                    <url>http://download.osgeo.org/webdav/geotools/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>boundlessgeo</id>
-                    <name>Boundless Geospatial Software and Open Source GIS‎ Repository</name>
-                    <url>https://repo.boundlessgeo.com/main/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-            </repositories>
-        </profile>
-    
-        <!-- enable this profile "mvn ... -P enable-it" -->
-        <profile>
-            <id>enable-it</id>
-            <properties>
-                <skip.rya.it>false</skip.rya.it>
-            </properties>
-        </profile>
-        
-        <!-- enable this profile "mvn ... -P build-rpms" -->
-        <profile>
-            <id>build-rpms</id>
-            <properties>
-                <skip.rpm.distribution>false</skip.rpm.distribution>
-            </properties>
-        </profile>
+		<jsr305.version>1.3.9-1</jsr305.version>
+		<jcip.version>1.0-1</jcip.version>
+		<kafka.version>0.10.0.1</kafka.version>
+		<kryo.version>3.0.3</kryo.version>
+		<jcabi-manifeses.version>1.1</jcabi-manifeses.version>
 
-        <!-- Enable this profile to generate a Code Coverage report with jacoco "mvn ... -P coverage" -->
-        <profile>
-            <id>coverage</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>default-prepare-agent</id>
-                                <goals>
-                                    <goal>prepare-agent</goal>
-                                </goals>
-                                <configuration>
-                                    <append>true</append>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>default-report</id>
-                                <phase>prepare-package</phase>
-                                <goals>
-                                    <goal>report</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-            <!--  Add a reporting section for usage of jacoco with the maven-site-plugin -->
-            <reporting>
-                <plugins>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                        <reportSets>
-                            <reportSet>
-                                <reports>
-                                    <!-- select non-aggregate reports -->
-                                    <report>report</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                </plugins>
-            </reporting>
-        </profile>
-    </profiles>
-    
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.api</artifactId>
-                <version>${project.version}</version>
-                <type>test-jar</type>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.api.model</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.api.evaluation</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.export.api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.sail</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>accumulo.rya</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>accumulo.rya</artifactId>
-                <version>${project.version}</version>
-                <type>test-jar</type>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>mongodb.rya</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>mongodb.rya</artifactId>
-                <version>${project.version}</version>
-                <type>test-jar</type>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.mapreduce</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.prospector</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.provenance</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.indexing</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.indexing</artifactId>
-                <classifier>accumulo-server</classifier>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.indexing</artifactId>
-                <classifier>map-reduce</classifier>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.indexing.pcj</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.pcj.fluo.api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.pcj.fluo.app</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.periodic.notification.api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.periodic.notification.service</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.periodic.notification.tests</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.streams.parent</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.streams.api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.streams.client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.streams.kafka</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.streams.kafka-test</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+		<!-- set profile property defaults -->
+		<skip.rya.it>true</skip.rya.it>  <!-- modified by -P enable-it -->
+		<skip.rpm.distribution>true</skip.rpm.distribution> <!-- modify by -P build-rpms -->
+	</properties>
 
-            <dependency>
-                <groupId>org.apache.thrift</groupId>
-                <artifactId>libthrift</artifactId>
-                <version>${thrift.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.pcj.fluo.client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.pcj.fluo.test.base</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.pcj.fluo.integration</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.test.parent</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.test.accumulo</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.test.mongo</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.test.rdf</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.test.kafka</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.kafka.connect.api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.kafka.connect.accumulo</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rya</groupId>
-                <artifactId>rya.kafka.connect.mongo</artifactId>
-                <version>${project.version}</version>
-	    </dependency>
-            <dependency>
-                <groupId>org.apache.accumulo</groupId>
-                <artifactId>accumulo-core</artifactId>
-                <version>${accumulo.version}</version>
-            </dependency>
-             <dependency>
-                <groupId>org.apache.accumulo</groupId>
-                <artifactId>accumulo-start</artifactId>
-                <version>${accumulo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-runtime</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-model</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-query</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-queryalgebra-model</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-queryparser-sparql</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-queryresultio-sparqlxml</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-queryresultio-text</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
+	<!-- Enable this profile if you want to include Geo functions within Rya. 
+		"mvn ... -P geoindexing" -->
+	<profiles>
+		<profile>
+			<id>geoindexing</id>
+			<properties>
+				<geomesa.version>1.3.0-m1</geomesa.version> <!-- Newest: 1.3.0-m1 -->
+				<geowave.version>0.9.3</geowave.version> <!-- Newest: 0.9.3 -->
+				<jts.version>1.13</jts.version>
+			</properties>
+			<dependencyManagement>
+				<dependencies>
+					<!-- Published RYA geo artifacts. -->
+					<dependency>
+						<groupId>org.apache.rya</groupId>
+						<artifactId>rya.geo.common</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.rya</groupId>
+						<artifactId>rya.geo.geomesa</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.rya</groupId>
+						<artifactId>rya.geo.geowave</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.rya</groupId>
+						<artifactId>rya.geo.mongo</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.rya</groupId>
+						<artifactId>rya.geoindexing</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.rya</groupId>
+						<artifactId>rya.pcj.functions.geo</artifactId>
+						<version>${project.version}</version>
+					</dependency>
 
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-rio-api</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-rio-binary</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-rio-datatypes</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-rio-nquads</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-rio-ntriples</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-rio-rdfxml</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-rio-trig</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-rio-turtle</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-queryrender</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-runtime-osgi</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.eclipse.rdf4j</groupId>
-                        <artifactId>rdf4j-http-client</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.eclipse.rdf4j</groupId>
-                        <artifactId>rdf4j-http-server-spring</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-queryalgebra-evaluation</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-queryresultio-sparqljson</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-repository-api</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-sail-api</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.rdf4j</groupId>
-                <artifactId>rdf4j-sail-base</artifactId>
-                <version>${org.eclipse.rdf4j.version}</version>
-            </dependency>
+					<!-- Geomesa dependencies. -->
+					<dependency>
+						<groupId>org.locationtech.geomesa</groupId>
+						<artifactId>geomesa-accumulo-datastore_2.11</artifactId>
+						<version>${geomesa.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.locationtech.geomesa</groupId>
+						<artifactId>geomesa-accumulo-distributed-runtime_2.11</artifactId>
+						<version>${geomesa.version}</version>
+					</dependency>
 
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>${gson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest-all</artifactId>
-                <version>${hamcrest.version}</version>
-            </dependency>
+					<!-- Geowave dependencies. -->
+					<dependency>
+						<groupId>mil.nga.giat</groupId>
+						<artifactId>geowave-parent</artifactId>
+						<version>${geowave.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>mil.nga.giat</groupId>
+						<artifactId>geowave-datastore-accumulo</artifactId>
+						<version>${geowave.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>mil.nga.giat</groupId>
+						<artifactId>geowave-adapter-vector</artifactId>
+						<version>${geowave.version}</version>
+					</dependency>
 
-            <dependency>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-core</artifactId>
-                <version>${camel.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-test</artifactId>
-                <version>${camel.version}</version>
-            </dependency>
+					<!-- Misc dependencies. -->
+					<dependency>
+						<groupId>com.vividsolutions</groupId>
+						<artifactId>jts</artifactId>
+						<version>1.13</version>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
 
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-simple</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>log4j-over-slf4j</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>jcl-over-slf4j</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>jul-to-slf4j</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-common</artifactId>
-                <version>${hadoop.version}</version>
-                <exclusions>
-                    <!-- released under the LGPL license -->
-                    <exclusion>
-                        <groupId>com.google.code.findbugs</groupId>
-                        <artifactId>jsr305</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-client</artifactId>
-                <version>${hadoop.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-hdfs</artifactId>
-                <version>${hadoop.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-yarn-client</artifactId>
-                <version>${hadoop.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-yarn-common</artifactId>
-                <version>${hadoop.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-yarn-api</artifactId>
-                <version>${hadoop.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-minicluster</artifactId>
-                <version>${hadoop.version}</version>
-            </dependency>
+			<repositories>
+				<repository>
+					<id>LocationTech - SNAPSHOT</id>
+					<url>https://repo.eclipse.org/content/repositories/snapshots/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>  <!-- disable snapshot repositories while there are no snapshot dependencies -->
+					</snapshots>
+				</repository>
+				<repository>
+					<id>LocationTech - RELEASE</id>
+					<url>https://repo.eclipse.org/content/repositories/releases/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>LocationTech - Third Party</id>
+					<url>https://repo.eclipse.org/content/repositories/thirdparty/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>geowave-maven-releases</id>
+					<name>GeoWave AWS Release Repository</name>
+					<url>https://s3.amazonaws.com/geowave-maven/release</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>geowave-maven-snapshot</id>
+					<name>GeoWave AWS Snapshot Repository</name>
+					<url>https://s3.amazonaws.com/geowave-maven/snapshot</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>  <!-- disable snapshot repositories while there are no snapshot dependencies -->
+					</snapshots>
+				</repository>
+				<repository>
+					<id>osgeo</id>
+					<name>Open Source Geospatial Foundation Repository</name>
+					<url>http://download.osgeo.org/webdav/geotools/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>boundlessgeo</id>
+					<name>Boundless Geospatial Software and Open Source GIS‎ Repository</name>
+					<url>https://repo.osgeo.org/repository/geo-solutions-cache/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+		</profile>
 
-            <dependency>
-                <groupId>org.apache.tinkerpop</groupId>
-                <artifactId>tinkergraph-gremlin</artifactId>
-                <version>${tinkerpop.version}</version>
-            </dependency>
+		<!-- enable this profile "mvn ... -P enable-it" -->
+		<profile>
+			<id>enable-it</id>
+			<properties>
+				<skip.rya.it>false</skip.rya.it>
+			</properties>
+		</profile>
 
-            <dependency>
-                <groupId>org.mongodb</groupId>
-                <artifactId>mongo-java-driver</artifactId>
-                <version>${mongodb.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.flapdoodle.embed</groupId>
-                <artifactId>de.flapdoodle.embed.mongo</artifactId>
-                <version>${embed.mongo.version}</version>
-            </dependency>
+		<!-- enable this profile "mvn ... -P build-rpms" -->
+		<profile>
+			<id>build-rpms</id>
+			<properties>
+				<skip.rpm.distribution>false</skip.rpm.distribution>
+			</properties>
+		</profile>
 
-            <!-- Spring -->
-            <dependency>
-                <groupId>org.springframework.shell</groupId>
-                <artifactId>spring-shell</artifactId>
-                <version>${spring.shell.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-hadoop</artifactId>
-                <version>${spring.hadoop.version}</version>
-            </dependency>
+		<!-- Enable this profile to generate a Code Coverage report with jacoco 
+			"mvn ... -P coverage" -->
+		<profile>
+			<id>coverage</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>default-prepare-agent</id>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+								<configuration>
+									<append>true</append>
+								</configuration>
+							</execution>
+							<execution>
+								<id>default-report</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>report</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<!-- Add a reporting section for usage of jacoco with the maven-site-plugin -->
+			<reporting>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<reportSets>
+							<reportSet>
+								<reports>
+									<!-- select non-aggregate reports -->
+									<report>report</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>
+				</plugins>
+			</reporting>
+		</profile>
+	</profiles>
 
-            <dependency>
-                <groupId>org.apache.karaf.shell</groupId>
-                <artifactId>org.apache.karaf.shell.console</artifactId>
-                <version>${karaf.version}</version>
-                <scope>provided</scope>
-            </dependency>
-        <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-utils</artifactId>
-            <version>${plexus.version}</version>
-        </dependency>
-       <dependency>
-            <groupId>com.beust</groupId>
-            <artifactId>jcommander</artifactId>
-            <version>${jcommander.version}</version>
-        </dependency>
-         <dependency>
-            <groupId>org.twitter4j</groupId>
-            <artifactId>twitter4j-stream</artifactId>
-            <version>${twitter4jstream.version}</version>
-        </dependency>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.api</artifactId>
+				<version>${project.version}</version>
+				<type>test-jar</type>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.api.model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.api.evaluation</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.export.api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.sail</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>accumulo.rya</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>accumulo.rya</artifactId>
+				<version>${project.version}</version>
+				<type>test-jar</type>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>mongodb.rya</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>mongodb.rya</artifactId>
+				<version>${project.version}</version>
+				<type>test-jar</type>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.mapreduce</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.prospector</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.provenance</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.indexing</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.indexing</artifactId>
+				<classifier>accumulo-server</classifier>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.indexing</artifactId>
+				<classifier>map-reduce</classifier>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.indexing.pcj</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.pcj.fluo.api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.pcj.fluo.app</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.periodic.notification.api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.periodic.notification.service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.periodic.notification.tests</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.streams.parent</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.streams.api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.streams.client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.streams.kafka</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.streams.kafka-test</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
-            <!-- Commons -->
-            <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>${commons.lang.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-codec</groupId>
-                <artifactId>commons-codec</artifactId>
-                <version>${commons.codec.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-pool</groupId>
-                <artifactId>commons-pool</artifactId>
-                <version>${commons.pool.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-cli</groupId>
-                <artifactId>commons-cli</artifactId>
-                <version>${commons.cli.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons.io.version}</version>
-            </dependency>
-            <!-- Free Text Indexing -->
-            <dependency>
-                <groupId>org.apache.lucene</groupId>
-                <artifactId>lucene-core</artifactId>
-                <version>${lucene.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.lucene</groupId>
-                <artifactId>lucene-analyzers-common</artifactId>
-                <version>${lucene.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>org.apache.thrift</groupId>
+				<artifactId>libthrift</artifactId>
+				<version>${thrift.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.pcj.fluo.client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.pcj.fluo.test.base</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.pcj.fluo.integration</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.test.parent</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.test.accumulo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.test.mongo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.test.rdf</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.test.kafka</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.kafka.connect.api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.kafka.connect.accumulo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.rya</groupId>
+				<artifactId>rya.kafka.connect.mongo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.accumulo</groupId>
+				<artifactId>accumulo-core</artifactId>
+				<version>${accumulo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.accumulo</groupId>
+				<artifactId>accumulo-start</artifactId>
+				<version>${accumulo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-runtime</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-model</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-query</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-queryalgebra-model</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-queryparser-sparql</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-queryresultio-sparqlxml</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-queryresultio-text</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>org.apache.zookeeper</groupId>
-                <artifactId>zookeeper</artifactId>
-                <version>${zookeeper.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-rio-api</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-rio-binary</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-rio-datatypes</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-rio-nquads</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-rio-ntriples</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-rio-rdfxml</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-rio-trig</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-rio-turtle</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-queryrender</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-runtime-osgi</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.eclipse.rdf4j</groupId>
+						<artifactId>rdf4j-http-client</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.eclipse.rdf4j</groupId>
+						<artifactId>rdf4j-http-server-spring</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-queryalgebra-evaluation</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-queryresultio-sparqljson</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-repository-api</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-sail-api</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-sail-base</artifactId>
+				<version>${org.eclipse.rdf4j.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>joda-time</groupId>
-                <artifactId>joda-time</artifactId>
-                <version>${joda-time.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>${gson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>${hamcrest.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>org.apache.pig</groupId>
-                <artifactId>pig</artifactId>
-                <version>${pig.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.antlr</groupId>
-                <artifactId>antlr-runtime</artifactId>
-                <version>${antlr-runtime.version}</version>
-                <scope>provided</scope>
-            </dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-core</artifactId>
+				<version>${camel.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-test</artifactId>
+				<version>${camel.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>net.sf.ehcache</groupId>
-                <artifactId>ehcache-core</artifactId>
-                <version>${ehcache.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>log4j-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jul-to-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>org.calrissian.mango</groupId>
-                <artifactId>mango-core</artifactId>
-                <version>${mango.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>org.apache.hadoop</groupId>
+				<artifactId>hadoop-common</artifactId>
+				<version>${hadoop.version}</version>
+				<exclusions>
+					<!-- released under the LGPL license -->
+					<exclusion>
+						<groupId>com.google.code.findbugs</groupId>
+						<artifactId>jsr305</artifactId>
+					</exclusion>
 
-            <dependency>
-                <groupId>org.apache.fluo</groupId>
-                <artifactId>fluo-api</artifactId>
-                <version>${fluo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.fluo</groupId>
-                <artifactId>fluo-core</artifactId>
-                <version>${fluo.version}</version>
-                <exclusions>
-                    <!-- released under the LGPL license -->
-                    <exclusion>
-                        <groupId>com.google.code.findbugs</groupId>
-                        <artifactId>jsr305</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.fluo</groupId>
-                <artifactId>fluo-mini</artifactId>
-                <version>${fluo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.fluo</groupId>
-                <artifactId>fluo-recipes-core</artifactId>
-                <version>${fluo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.fluo</groupId>
-                <artifactId>fluo-recipes-accumulo</artifactId>
-                <version>${fluo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.fluo</groupId>
-                <artifactId>fluo-recipes-test</artifactId>
-                <version>${fluo.version}</version>
-                <scope>test</scope>
-            </dependency>
+					<exclusion>
+						<groupId>jdk.tools</groupId>
+						<artifactId>jdk.tools</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.hadoop</groupId>
+				<artifactId>hadoop-client</artifactId>
+				<version>${hadoop.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.hadoop</groupId>
+				<artifactId>hadoop-hdfs</artifactId>
+				<version>${hadoop.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.hadoop</groupId>
+				<artifactId>hadoop-yarn-client</artifactId>
+				<version>${hadoop.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.hadoop</groupId>
+				<artifactId>hadoop-yarn-common</artifactId>
+				<version>${hadoop.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.hadoop</groupId>
+				<artifactId>hadoop-yarn-api</artifactId>
+				<version>${hadoop.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.hadoop</groupId>
+				<artifactId>hadoop-minicluster</artifactId>
+				<version>${hadoop.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>${httpcomponents.httpclient.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>org.apache.tinkerpop</groupId>
+				<artifactId>tinkergraph-gremlin</artifactId>
+				<version>${tinkerpop.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpcore</artifactId>
-                <version>${httpcomponents.httpcore.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>org.mongodb</groupId>
+				<artifactId>mongo-java-driver</artifactId>
+				<version>${mongodb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.flapdoodle.embed</groupId>
+				<artifactId>de.flapdoodle.embed.mongo</artifactId>
+				<version>${embed.mongo.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-all</artifactId>
-                <version>${mockito.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.mrunit</groupId>
-                <artifactId>mrunit</artifactId>
-                <version>${mrunit.version}</version>
-                <classifier>hadoop2</classifier>
-                <scope>test</scope>
-                <!-- mrunit includes incompatible versions of powermock and junit by default -->
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.powermock</groupId>
-                        <artifactId>powermock-module-junit4</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-module-junit4</artifactId>
-                <version>${powermock.version}</version>
-                <scope>test</scope>
-            </dependency>
-            
-            <!-- JMH Benchmarking tool dependencies. -->
-            <dependency>
-                <groupId>org.openjdk.jmh</groupId>
-                <artifactId>jmh-core</artifactId>
-                <version>${jmh.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.openjdk.jmh</groupId>
-                <artifactId>jmh-generator-annprocess</artifactId>
-                <version>${jmh.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            
-            <dependency>
-                <groupId>com.github.stephenc.findbugs</groupId>
-                <artifactId>findbugs-annotations</artifactId>
-                <version>${jsr305.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.stephenc.jcip</groupId>
-                <artifactId>jcip-annotations</artifactId>
-                <version>${jcip.version}</version>
-            </dependency>
-            
-            <dependency>
-                <groupId>org.apache.accumulo</groupId>
-                <artifactId>accumulo-minicluster</artifactId>
-                <version>${accumulo.version}</version>
-                <exclusions>
-                    <!-- released under the LGPL license -->
-                    <exclusion>
-                        <groupId>com.google.code.findbugs</groupId>
-                        <artifactId>jsr305</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <!-- Kafka -->
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka-clients</artifactId>
-                <version>${kafka.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka-clients</artifactId>
-                <classifier>test</classifier>
-                <version>${kafka.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka-streams</artifactId>
-                <version>${kafka.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka_2.11</artifactId>
-                <version>${kafka.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>slf4j-log4j12</artifactId>
-                        <groupId>org.slf4j</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>connect-api</artifactId>
-                <version>${kafka.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka_2.11</artifactId>
-                <version>${kafka.version}</version>
-                <classifier>test</classifier>
-            </dependency>
-            <dependency>
-                <groupId>com.esotericsoftware</groupId>
-                <artifactId>kryo</artifactId>
-                <version>${kryo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.jcabi</groupId>
-                <artifactId>jcabi-manifests</artifactId>
-                <version>${jcabi-manifeses.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+			<!-- Spring -->
+			<dependency>
+				<groupId>org.springframework.shell</groupId>
+				<artifactId>spring-shell</artifactId>
+				<version>${spring.shell.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-hadoop</artifactId>
+				<version>${spring.hadoop.version}</version>
+			</dependency>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>
+			<dependency>
+				<groupId>org.apache.karaf.shell</groupId>
+				<artifactId>org.apache.karaf.shell.console</artifactId>
+				<version>${karaf.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-utils</artifactId>
+				<version>${plexus.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.beust</groupId>
+				<artifactId>jcommander</artifactId>
+				<version>${jcommander.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.twitter4j</groupId>
+				<artifactId>twitter4j-stream</artifactId>
+				<version>${twitter4jstream.version}</version>
+			</dependency>
 
-                <!-- Fail a build if it uses any Java features introduced after 1.7. -->
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>animal-sniffer-maven-plugin</artifactId>
-                    <version>1.15</version>
-                    <configuration>
-                        <signature>
-                            <groupId>org.codehaus.mojo.signature</groupId>
-                            <artifactId>java18</artifactId>
-                            <version>1.0</version>
-                        </signature>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+			<!-- Commons -->
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons.lang.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons.codec.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-pool</groupId>
+				<artifactId>commons-pool</artifactId>
+				<version>${commons.pool.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-cli</groupId>
+				<artifactId>commons-cli</artifactId>
+				<version>${commons.cli.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons.io.version}</version>
+			</dependency>
+			<!-- Free Text Indexing -->
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-core</artifactId>
+				<version>${lucene.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-analyzers-common</artifactId>
+				<version>${lucene.version}</version>
+			</dependency>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <configuration>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <configuration>
-                        <systemPropertyVariables>
-                            <java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
-                        </systemPropertyVariables>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-failsafe-plugin</artifactId>
-                    <configuration>
-                        <systemPropertyVariables>
-                            <!--  
-                            Zookeeper tries to resolve localhost to IPv6 by default.
-                            If on an IPv4 network, using -Djava.net.preferIPv4Stack=true
-                            can make some IT's that create many connections run 3-5x faster.
-                            -->
-                            <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
-                            <java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
-                        </systemPropertyVariables>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.7.9</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>2.17</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.puppycrawl.tools</groupId>
-                            <artifactId>checkstyle</artifactId>
-                            <version>8.3</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <configuration>
-                        <rules>
-                            <requireMavenVersion>
-                                <version>[${maven.min-version},)</version>
-                            </requireMavenVersion>
-                        </rules>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <configuration>
-                        <autoVersionSubmodules>true</autoVersionSubmodules>
-                        <tagNameFormat>v@{project.version}</tagNameFormat>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-shade-plugin</artifactId>
-                    <version>2.4.3</version>
-                    <configuration>
-                        <shadedArtifactAttached>true</shadedArtifactAttached>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>jaxb2-maven-plugin</artifactId>
-                    <version>2.3.1</version>
-                </plugin>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>
-                                            org.apache.rat
-                                        </groupId>
-                                        <artifactId>
-                                            apache-rat-plugin
-                                        </artifactId>
-                                        <versionRange>
-                                            [0.11,)
-                                        </versionRange>
-                                        <goals>
-                                            <goal>check</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore />
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-               <plugin>
-                    <!-- Apache Release Audit Tool - reports missing license headers and other issues. -->
-                    <groupId>org.apache.rat</groupId>
-                    <artifactId>apache-rat-plugin</artifactId>
-                    <configuration>
-                        <excludes>
-                            <exclude>DEPENDENCIES</exclude>
-                        </excludes>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <!-- Used for auditing dependency licenses for releases. -->
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>license-maven-plugin</artifactId>
-                    <version>1.14</version>
-                </plugin>
-                <plugin>
-                    <!-- Used to add ASF license headers (without a copyright clause) to generated source. -->
-                    <groupId>com.mycila</groupId>
-                    <artifactId>license-maven-plugin</artifactId>
-                    <version>3.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>findbugs-maven-plugin</artifactId>
-                    <version>3.0.5</version>
-                    <configuration>
-                        <effort>Max</effort>
-                        <threshold>Low</threshold>
-                    </configuration>
-                </plugin>
-                <plugin>   
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>rpm-maven-plugin</artifactId>
-                    <version>2.2.0</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zookeeper.version}</version>
+			</dependency>
 
-        <plugins>
-           <!-- Fail any build that doesn't use the project's Java version. -->
-           <plugin>
-               <groupId>org.codehaus.mojo</groupId>
-               <artifactId>animal-sniffer-maven-plugin</artifactId>
-           </plugin>
-           <plugin>
-                <!-- Apache Release Audit Tool - reports missing license headers and other issues. -->
-                <!-- Note: Add exclusions to deepest maven submodule/project in the plug-in management section -->
-                <groupId>org.apache.rat</groupId>
-                <artifactId>apache-rat-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>check-licenses</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>enforce-mvn</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                        <configuration>
-                            <skipITs>${skip.rya.it}</skipITs>
-                            <reuseForks>false</reuseForks>  <!-- Temporary fix until RYA-331 is resolved. -->
-                            <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds> <!-- kill fork after 10 minutes -->
-                            <argLine>-Xmx2G</argLine>  <!-- Specify Xmx to get a consistent memory limit on hosts with reduced RAM. -->
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <configuration>
-                    <failOnError>true</failOnError>   <!-- These are serious defects that aren't allowed in Rya.  Fail the build. -->
-                    <visitors>DefaultEncodingDetector</visitors>  <!--  Only specify detectors that should not detect any errors. -->
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>analyze-compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <configuration>
-                    <checkstyleRules>
-                        <module name="Checker">
-                            <property name="charset" value="UTF-8" />
-                            <property name="severity" value="warning" />
-                            <!--
-                            <module name="FileTabCharacter">
-                                <property name="eachLine" value="true" />
-                            </module>
-                            -->
-                            
-                            <module name="TreeWalker">
-                                <module name="OneTopLevelClass" />
-                                <!--
-                                <module name="RegexpSinglelineJava">
-                                    <property name="format" value="\s+$" />
-                                    <property name="message" value="Line has trailing whitespace." />
-                                </module>
-                                -->
-                                <!-- 
-                                <module name="RegexpSinglelineJava">
-                                    <property name="format" value="[@]see\s+[{][@]link" />
-                                    <property name="message" value="Javadoc @see does not need @link: pick one or the other." />
-                                </module>
-                                -->
-                                <module name="RegexpSinglelineJava">
-                                    <property name="format" value="jline[.]internal[.]" />
-                                    <property name="message" value="Please use Guava imports instead of jline.internal.*" />
-                                </module>
-                                <module name="RegexpSinglelineJava">
-                                    <property name="format" value="com[.]beust[.]jcommander[.]internal[.]" />
-                                    <property name="message" value="Please use Guava imports instead of com.beust.jcommander.internal.*" />
-                                </module>
-                                <module name="RegexpSinglelineJava">
-                                    <property name="format" value="FluoITHelper[.]printFluoTable" />
-                                    <property name="message" value="Please comment out stdout debugging utilities like FluoITHelper.printFluoTable()" />
-                                    <property name="ignoreComments" value="true" />
-                                </module>
-                                <!-- 
-                                <module name="RegexpSinglelineJava">
-                                    <property name="format" value="junit[.]framework[.]" />
-                                    <property name="message" value="Please use JUnit 4 APIs instead of Junit 3" />
-                                </module>
-                                -->
-                                <!-- <module name="SingleLineJavadoc" /> -->
-                                <module name="MissingOverrideCheck" />
-                                <module name="AnnotationLocation" />
-                            </module>
-                        </module>
-                    </checkstyleRules>
-                    <violationSeverity>warning</violationSeverity>
-                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                    <!-- <excludes>**/thrift/*.java,**/proto/*.java,**/HelpMojo.java</excludes> -->
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>check-style</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>${joda-time.version}</version>
+			</dependency>
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </reporting>
+			<dependency>
+				<groupId>org.apache.pig</groupId>
+				<artifactId>pig</artifactId>
+				<version>${pig.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.antlr</groupId>
+				<artifactId>antlr-runtime</artifactId>
+				<version>${antlr-runtime.version}</version>
+				<scope>provided</scope>
+			</dependency>
 
-    <scm>
-        <connection>scm:git:git://git.apache.org/incubator-rya.git</connection>
-        <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/incubator-rya.git</developerConnection>
-        <tag>HEAD</tag>
-        <url>https://git-wip-us.apache.org/repos/asf?p=incubator-rya.git</url>
-    </scm>
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-core</artifactId>
+				<version>${ehcache.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.calrissian.mango</groupId>
+				<artifactId>mango-core</artifactId>
+				<version>${mango.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.fluo</groupId>
+				<artifactId>fluo-api</artifactId>
+				<version>${fluo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.fluo</groupId>
+				<artifactId>fluo-core</artifactId>
+				<version>${fluo.version}</version>
+				<exclusions>
+					<!-- released under the LGPL license -->
+					<exclusion>
+						<groupId>com.google.code.findbugs</groupId>
+						<artifactId>jsr305</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.fluo</groupId>
+				<artifactId>fluo-mini</artifactId>
+				<version>${fluo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.fluo</groupId>
+				<artifactId>fluo-recipes-core</artifactId>
+				<version>${fluo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.fluo</groupId>
+				<artifactId>fluo-recipes-accumulo</artifactId>
+				<version>${fluo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.fluo</groupId>
+				<artifactId>fluo-recipes-test</artifactId>
+				<version>${fluo.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpcomponents.httpclient.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpcore</artifactId>
+				<version>${httpcomponents.httpcore.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.mrunit</groupId>
+				<artifactId>mrunit</artifactId>
+				<version>${mrunit.version}</version>
+				<classifier>hadoop2</classifier>
+				<scope>test</scope>
+				<!-- mrunit includes incompatible versions of powermock and junit by 
+					default -->
+				<exclusions>
+					<exclusion>
+						<groupId>org.powermock</groupId>
+						<artifactId>powermock-module-junit4</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.powermock</groupId>
+				<artifactId>powermock-module-junit4</artifactId>
+				<version>${powermock.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- JMH Benchmarking tool dependencies. -->
+			<dependency>
+				<groupId>org.openjdk.jmh</groupId>
+				<artifactId>jmh-core</artifactId>
+				<version>${jmh.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjdk.jmh</groupId>
+				<artifactId>jmh-generator-annprocess</artifactId>
+				<version>${jmh.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.stephenc.findbugs</groupId>
+				<artifactId>findbugs-annotations</artifactId>
+				<version>${jsr305.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.stephenc.jcip</groupId>
+				<artifactId>jcip-annotations</artifactId>
+				<version>${jcip.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.accumulo</groupId>
+				<artifactId>accumulo-minicluster</artifactId>
+				<version>${accumulo.version}</version>
+				<exclusions>
+					<!-- released under the LGPL license -->
+					<exclusion>
+						<groupId>com.google.code.findbugs</groupId>
+						<artifactId>jsr305</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!-- Kafka -->
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>kafka-clients</artifactId>
+				<version>${kafka.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>kafka-clients</artifactId>
+				<classifier>test</classifier>
+				<version>${kafka.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>kafka-streams</artifactId>
+				<version>${kafka.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>kafka_2.11</artifactId>
+				<version>${kafka.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>slf4j-log4j12</artifactId>
+						<groupId>org.slf4j</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>connect-api</artifactId>
+				<version>${kafka.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>kafka_2.11</artifactId>
+				<version>${kafka.version}</version>
+				<classifier>test</classifier>
+			</dependency>
+			<dependency>
+				<groupId>com.esotericsoftware</groupId>
+				<artifactId>kryo</artifactId>
+				<version>${kryo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jcabi</groupId>
+				<artifactId>jcabi-manifests</artifactId>
+				<version>${jcabi-manifeses.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+
+				<!-- Fail a build if it uses any Java features introduced after 1.7. -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>animal-sniffer-maven-plugin</artifactId>
+					<version>1.15</version>
+					<configuration>
+						<signature>
+							<groupId>org.codehaus.mojo.signature</groupId>
+							<artifactId>java18</artifactId>
+							<version>1.0</version>
+						</signature>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>test</phase>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<systemPropertyVariables>
+							<java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
+						</systemPropertyVariables>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<configuration>
+						<systemPropertyVariables>
+							<!-- Zookeeper tries to resolve localhost to IPv6 by default. If on 
+								an IPv4 network, using -Djava.net.preferIPv4Stack=true can make some IT's 
+								that create many connections run 3-5x faster. -->
+							<java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+							<java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
+						</systemPropertyVariables>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.7.9</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>2.17</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>8.3</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<configuration>
+						<rules>
+							<requireMavenVersion>
+								<version>[${maven.min-version},)</version>
+							</requireMavenVersion>
+						</rules>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<configuration>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+						<tagNameFormat>v@{project.version}</tagNameFormat>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>2.4.3</version>
+					<configuration>
+						<shadedArtifactAttached>true</shadedArtifactAttached>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jaxb2-maven-plugin</artifactId>
+					<version>2.3.1</version>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.rat
+										</groupId>
+										<artifactId>
+											apache-rat-plugin
+										</artifactId>
+										<versionRange>
+											[0.11,)
+										</versionRange>
+										<goals>
+											<goal>check</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- Apache Release Audit Tool - reports missing license headers and 
+						other issues. -->
+					<groupId>org.apache.rat</groupId>
+					<artifactId>apache-rat-plugin</artifactId>
+					<configuration>
+						<excludes>
+							<exclude>DEPENDENCIES</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- Used for auditing dependency licenses for releases. -->
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>1.14</version>
+				</plugin>
+				<plugin>
+					<!-- Used to add ASF license headers (without a copyright clause) to 
+						generated source. -->
+					<groupId>com.mycila</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>3.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>3.0.5</version>
+					<configuration>
+						<effort>Max</effort>
+						<threshold>Low</threshold>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>rpm-maven-plugin</artifactId>
+					<version>2.2.0</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<!-- Fail any build that doesn't use the project's Java version. -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>animal-sniffer-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<!-- Apache Release Audit Tool - reports missing license headers and 
+					other issues. -->
+				<!-- Note: Add exclusions to deepest maven submodule/project in the plug-in 
+					management section -->
+				<groupId>org.apache.rat</groupId>
+				<artifactId>apache-rat-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>check-licenses</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>enforce-mvn</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+						<configuration>
+							<skipITs>${skip.rya.it}</skipITs>
+							<reuseForks>false</reuseForks>  <!-- Temporary fix until RYA-331 is resolved. -->
+							<forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds> <!-- kill fork after 10 minutes -->
+							<argLine>-Xmx2G</argLine>  <!-- Specify Xmx to get a consistent memory limit on hosts with reduced RAM. -->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/*IntegrationTest.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<configuration>
+					<failOnError>true</failOnError>   <!-- These are serious defects that aren't allowed in Rya. Fail the build. -->
+					<visitors>DefaultEncodingDetector</visitors>  <!-- Only specify detectors that should not detect any errors. -->
+				</configuration>
+				<executions>
+					<execution>
+						<id>analyze-compile</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<configuration>
+					<checkstyleRules>
+						<module name="Checker">
+							<property name="charset" value="UTF-8" />
+							<property name="severity" value="warning" />
+							<!-- <module name="FileTabCharacter"> <property name="eachLine" value="true" 
+								/> </module> -->
+
+							<module name="TreeWalker">
+								<module name="OneTopLevelClass" />
+								<!-- <module name="RegexpSinglelineJava"> <property name="format" 
+									value="\s+$" /> <property name="message" value="Line has trailing whitespace." 
+									/> </module> -->
+								<!-- <module name="RegexpSinglelineJava"> <property name="format" 
+									value="[@]see\s+[{][@]link" /> <property name="message" value="Javadoc @see 
+									does not need @link: pick one or the other." /> </module> -->
+								<module name="RegexpSinglelineJava">
+									<property name="format" value="jline[.]internal[.]" />
+									<property name="message"
+										value="Please use Guava imports instead of jline.internal.*" />
+								</module>
+								<module name="RegexpSinglelineJava">
+									<property name="format"
+										value="com[.]beust[.]jcommander[.]internal[.]" />
+									<property name="message"
+										value="Please use Guava imports instead of com.beust.jcommander.internal.*" />
+								</module>
+								<module name="RegexpSinglelineJava">
+									<property name="format"
+										value="FluoITHelper[.]printFluoTable" />
+									<property name="message"
+										value="Please comment out stdout debugging utilities like FluoITHelper.printFluoTable()" />
+									<property name="ignoreComments" value="true" />
+								</module>
+								<!-- <module name="RegexpSinglelineJava"> <property name="format" 
+									value="junit[.]framework[.]" /> <property name="message" value="Please use 
+									JUnit 4 APIs instead of Junit 3" /> </module> -->
+								<!-- <module name="SingleLineJavadoc" /> -->
+								<module name="MissingOverrideCheck" />
+								<module name="AnnotationLocation" />
+							</module>
+						</module>
+					</checkstyleRules>
+					<violationSeverity>warning</violationSeverity>
+					<includeTestSourceDirectory>true</includeTestSourceDirectory>
+					<!-- <excludes>**/thrift/*.java,**/proto/*.java,**/HelpMojo.java</excludes> -->
+				</configuration>
+				<executions>
+					<execution>
+						<id>check-style</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<scm>
+		<connection>scm:git:git://git.apache.org/incubator-rya.git</connection>
+		<developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/incubator-rya.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://git-wip-us.apache.org/repos/asf?p=incubator-rya.git</url>
+	</scm>
 </project>
